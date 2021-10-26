@@ -275,5 +275,6 @@ namespace GDSB.UI
                 textBoxUsuario.Select(oldLength, textBoxUsuario.Text.Length - oldLength);
             }
         }
+
     }
 }
