@@ -1,0 +1,22 @@
+﻿<Window x:Class="GDSB.UI.WindowLoginProfile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GDSB.UI"
+        mc:Ignorable="d"
+        Title="Login Profile" Height="399.59" Width="259.018" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,-6,0">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FF363636" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Image x:Name="imageProfile" HorizontalAlignment="Left" Height="266" Margin="10,10,0,0" VerticalAlignment="Top" Width="224"/>
+        <Label Name="lblNome" Content="Nome profile" HorizontalAlignment="Left" Margin="10,281,0,0" VerticalAlignment="Top" Width="224" HorizontalContentAlignment="Center" Foreground="White"/>
+        <PasswordBox x:Name="textBoxPassword" KeyDown="textBoxPassword_KeyDown" HorizontalAlignment="Left" Height="23" Margin="10,312,0,0" VerticalAlignment="Top" Width="224"/>
+        <Button Content="Login" HorizontalAlignment="Left" Margin="10,340,0,0" VerticalAlignment="Top" Width="224" Click="Button_Click"/>
+
+    </Grid>
+</Window>
