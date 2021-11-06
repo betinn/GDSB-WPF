@@ -9,6 +9,7 @@ namespace GDSB.Model.ProfileObjects
 {
     public class SecretBox
     {
+        public bool favorito { get; set; }
         public System.Windows.Media.Color newBaseColor { get; set; }
         public string boxName = string.Empty;
         public string url = string.Empty;

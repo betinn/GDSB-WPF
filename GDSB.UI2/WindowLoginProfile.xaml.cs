@@ -55,6 +55,8 @@ namespace GDSB.UI
             if (e.Key == Key.Enter)
                 TryDecript();
         }
+        
+
         private void TryDecript()
         {
             try
@@ -63,7 +65,7 @@ namespace GDSB.UI
                 new WindowUserProfile(profile).Show();
                 DialogResult = true;
             }
-            catch
+            catch(Exception ex)
             {
                 MessageBox.Show("Falha ao descriptografar arquivo devido senha INCORRETA ");
                 return;

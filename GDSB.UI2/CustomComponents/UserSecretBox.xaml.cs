@@ -43,6 +43,7 @@ namespace GDSB.UI.CustomComponents
             }
 
             this.box = box;
+            AtualizaEstrela();
 
             CopyUser.MouseEnter += CopyUser_MouseEnter;
             CopyUser.MouseLeave += CopyUser_MouseLeave;
@@ -57,8 +58,23 @@ namespace GDSB.UI.CustomComponents
 
             Excluir.MouseEnter += Excluir_MouseEnter;
             Excluir.MouseLeave += Excluir_MouseLeave;
-        }
 
+        }
+        public void AtualizaEstrela()
+        {
+            if (box.favorito)
+            {
+                star.Source = Business.Util.BitmapToBitmapImage(new System.Drawing.Bitmap(Properties.Resources.STAR));
+                star.Width = 16;
+                star.Height = 16;
+            }
+            else
+            {
+                star.Source = Business.Util.BitmapToBitmapImage(new System.Drawing.Bitmap(Properties.Resources.star_cinza));
+                star.Width = 13;
+                star.Height = 13;
+            }
+        }
 
         private void CopyPass_Click(object sender, RoutedEventArgs e)
         {

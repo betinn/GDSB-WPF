@@ -16,6 +16,9 @@ namespace GDSB.UI
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             new MainWindow().Show();
+
+            //if (w.Visibility == Visibility.Visible)
+            //    w.Show();
         }
     }
 }

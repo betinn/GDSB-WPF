@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -31,6 +32,11 @@ namespace GDSB.UI
                 };
 
                 Panel.Children.Add(prof);
+
+                //if (profiles.Count == 1)
+                //{
+                //    prof.RaiseEvent(new MouseButtonEventArgs(Mouse.PrimaryDevice, Environment.TickCount, MouseButton.Left) { RoutedEvent = Button.MouseLeftButtonUpEvent });
+                //}
             }
         }
 
@@ -96,5 +102,6 @@ namespace GDSB.UI
                 }
             }
         }
+
     }
 }

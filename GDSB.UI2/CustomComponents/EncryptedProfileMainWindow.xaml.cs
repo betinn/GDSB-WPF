@@ -26,6 +26,7 @@ namespace GDSB.UI.CustomComponents
         public GDSB.Model.ProfileObjects.EncryptedProfile encryptedProfile;
 
         private bool colorEffectOnClick = false;
+
         public EncryptedProfileMainWindow(GDSB.Model.ProfileObjects.EncryptedProfile profile)
         {
             InitializeComponent();
