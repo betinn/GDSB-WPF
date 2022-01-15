@@ -53,6 +53,7 @@ namespace GDSB.Business
 
         public static bool UpdateProfile(Profile profile)
         {
+            profile.fullFileName = Path.Combine(baseFolder, new FileInfo(profile.fullFileName).Name);
             string profileBKP = string.Empty;
             if (File.Exists(profile.fullFileName))
                 profileBKP = File.ReadAllText(profile.fullFileName);
