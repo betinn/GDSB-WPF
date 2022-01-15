@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDSB.Business", "GDSB.Busin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDSB.UI", "GDSB.UI2\GDSB.UI.csproj", "{988BC465-CE4C-4143-AEC0-2D97D1C7BCB4}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupGDSBX", "SetupGDSBX\SetupGDSBX.vdproj", "{D4FB0653-CBB7-4806-A821-1A628C7AD08B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,8 +27,6 @@ Global
 		{988BC465-CE4C-4143-AEC0-2D97D1C7BCB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{988BC465-CE4C-4143-AEC0-2D97D1C7BCB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{988BC465-CE4C-4143-AEC0-2D97D1C7BCB4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D4FB0653-CBB7-4806-A821-1A628C7AD08B}.Debug|Any CPU.ActiveCfg = Debug
-		{D4FB0653-CBB7-4806-A821-1A628C7AD08B}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
