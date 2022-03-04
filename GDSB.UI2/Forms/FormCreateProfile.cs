@@ -1,14 +1,8 @@
-﻿using GDSB.Model;
-using GDSB.Model.ProfileObjects;
+﻿using GDSB.Model.ProfileObjects;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GDSB.UI
@@ -65,7 +59,7 @@ namespace GDSB.UI
                 DialogResult = DialogResult.OK;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro ao tentar criar o perfil\n\nErro: " + ex.Message, "", MessageBoxButtons.OK);
             }
@@ -78,10 +72,10 @@ namespace GDSB.UI
 
         private void buttonUploadPic_Click(object sender, EventArgs e)
         {
-            using(var ofd = new OpenFileDialog())
+            using (var ofd = new OpenFileDialog())
             {
                 ofd.Filter = "Image Files |*.jpg;*.png;*.jpeg";
-                if(ofd.ShowDialog() == DialogResult.OK)
+                if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     imgBase64 = GDSB.Business.ProfileConfiguration.ConvertImgToBase64(ofd.FileName);
                     pictureBox1.Image = Image.FromStream(new MemoryStream(Convert.FromBase64String(imgBase64)));

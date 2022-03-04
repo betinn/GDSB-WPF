@@ -1,22 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
 namespace GDSB.Business
 {
-    public class Util
+    public static class Util
     {
-        public static Random r = new Random();
-        
+        public static readonly Random r = new Random();
+
         public static BitmapImage BitmapToBitmapImage(Bitmap src)
         {
             MemoryStream ms = new MemoryStream();
-            ((System.Drawing.Bitmap)src).Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            (src).Save(ms, System.Drawing.Imaging.ImageFormat.Png);
             BitmapImage image = new BitmapImage();
             image.BeginInit();
             ms.Seek(0, SeekOrigin.Begin);

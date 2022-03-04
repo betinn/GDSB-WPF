@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 
 namespace GDSB.UI
 {
@@ -17,8 +11,6 @@ namespace GDSB.UI
         {
             new MainWindow().Show();
 
-            //if (w.Visibility == Visibility.Visible)
-            //    w.Show();
         }
     }
 }

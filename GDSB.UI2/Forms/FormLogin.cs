@@ -1,19 +1,12 @@
-﻿using GDSB.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GDSB.UI.Forms
 {
     public partial class FormLogin : Form
     {
-        public Model.Old.Profile profile = null;
+        public Model.Old.Profile profile { get; set; } = null;
         private GDSB.Model.ProfileObjects.EncryptedProfile encryptedProfile = null;
         public FormLogin(GDSB.Model.ProfileObjects.EncryptedProfile profile)
         {
@@ -36,7 +29,7 @@ namespace GDSB.UI.Forms
                 profile = GDSB.Business.ProfileConfiguration.TryDecryptOldProfile(textBoxPassword.Text, encryptedProfile.profileEncrypted);
 
                 List<GDSB.Model.ProfileObjects.SecretBox> ls = new List<GDSB.Model.ProfileObjects.SecretBox>();
-                foreach(var sb in profile.boxes)
+                foreach (var sb in profile.boxes)
                 {
                     ls.Add(new GDSB.Model.ProfileObjects.SecretBox()
                     {
@@ -64,14 +57,14 @@ namespace GDSB.UI.Forms
                     Business.Util.GetMediaColor("#FF07004D")
                     ));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro: " + ex.Message);
                 return;
             }
 
 
-            DialogResult =  DialogResult.OK;
+            DialogResult = DialogResult.OK;
         }
 
 

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GDSB.Model.Old
 {
@@ -14,8 +11,7 @@ namespace GDSB.Model.Old
         public DateTime dataNascimento { get; private set; }
         public string senha { get; set; }
         public DateTime dtCreated { get; private set; }
-
-        public List<SecretBox> boxes = null;
+        public List<SecretBox> boxes { get; set; }
         public bool secretKey { get; private set; }
         public string imageBase64 { get; set; }
         public Settings.Config config { get; set; }

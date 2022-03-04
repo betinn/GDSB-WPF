@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# S1643: Strings should not be concatenated using '+' in a loop
+dotnet_diagnostic.S1643.severity = none

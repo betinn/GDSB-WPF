@@ -1,25 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace GDSB.UI.CustomComponents
 {
-    public class ViewHidePassword : PictureBox 
+    public class ViewHidePassword : PictureBox
     {
+        private bool _hide;
         public bool hide
         {
-            get
-            {
-                return hide;
-            }
-
+            get { return _hide; }
             set
             {
-                if(value == true)
+                _hide = value;
+                if (_hide)
                     BackgroundImage = Properties.Resources.PasswordHide;
                 else
                     BackgroundImage = Properties.Resources.PasswordView;

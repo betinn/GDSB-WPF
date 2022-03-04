@@ -1,25 +1,16 @@
 ﻿using GDSB.Model.ProfileObjects;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GDSB.UI
 {
     /// <summary>
     /// Interaction logic for WindowSettingsProfile.xaml
     /// </summary>
-    public partial class WindowSettingsProfile : Window,IDisposable
+    public partial class WindowSettingsProfile : Window, IDisposable
     {
         private Profile profile;
         public WindowSettingsProfile(Profile profile)
@@ -55,11 +46,11 @@ namespace GDSB.UI
                     textBoxNewImg.Text = dlg.FileName;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro ao pegar imagem: " + ex.Message, "!", MessageBoxButton.OK);
             }
-        
+
         }
 
         private void colorPickerGradLine1_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
@@ -78,11 +69,17 @@ namespace GDSB.UI
 
         public void Dispose()
         {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            // Clean
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(colorPickerGradLine1.SelectedColor == null ||
+            if (colorPickerGradLine1.SelectedColor == null ||
                 colorPickerGradLine2.SelectedColor == null ||
                 colorPickerGradLine3.SelectedColor == null ||
                 string.IsNullOrEmpty(textBoxNome.Text) ||

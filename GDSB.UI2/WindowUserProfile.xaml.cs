@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GDSB.UI
 {
@@ -20,7 +10,7 @@ namespace GDSB.UI
     /// </summary>
     public partial class WindowUserProfile : Window
     {
-        public Model.ProfileObjects.Profile profile;
+        public Model.ProfileObjects.Profile profile { get; set; }
         public WindowUserProfile(Model.ProfileObjects.Profile profile)
         {
             InitializeComponent();
@@ -45,7 +35,6 @@ namespace GDSB.UI
             if (PanelBoxes.Children.Count != 0)
                 PanelBoxes.Children.Clear();
 
-            //var boxes = profile.boxes;//.OrderByDescending(x => x.favorito).ThenBy(x => x.boxName);
 
             var listres = profile.boxes.OrderByDescending(x => x.favorito).ThenBy(x => x.boxName).Select(x => new CustomComponents.UserSecretBox(x));
 
@@ -81,37 +70,9 @@ namespace GDSB.UI
                 });
                 this.PanelBoxes.Children.Add(sb);
             }
-                
 
-            //foreach (var box in boxes)
-            //{
-            //    var sb = new CustomComponents.UserSecretBox(box);
-            //    sb.Excluir.MouseLeftButtonDown += new MouseButtonEventHandler(delegate (object sender, MouseButtonEventArgs args)
-            //    {
-            //        if (MessageBox.Show("Isto é irreversível, tem certeza disso?", "!", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK)
-            //        {
-            //            profile.boxes.Remove(box);
-            //            Business.ProfileConfiguration.UpdateProfile(profile);
-            //            PanelBoxes.Children.Remove(sb);
-            //        }
-            //    });
-            //    sb.BtnEdit.MouseLeftButtonDown += new MouseButtonEventHandler(delegate (object sender, MouseButtonEventArgs args)
-            //    {
-            //        Hide();
-            //        using (WindowCreateSecretBox fm = new WindowCreateSecretBox(profile, box))
-            //            if (fm.ShowDialog() == true)
-            //                UpdateWindowProfile();
-            //        Show();
-            //    });
-            //    sb.star.MouseLeftButtonDown += new MouseButtonEventHandler(delegate (object sender, MouseButtonEventArgs args)
-            //    {
-            //        box.favorito = !box.favorito;
-            //        Business.ProfileConfiguration.UpdateProfile(profile);
-            //        UpdateWindowProfile();
-            //    });
-            //    this.PanelBoxes.Children.Add(sb);
-            //}
-            //textboxSearch.Text = "";
+
+            
         }
 
         private void BtnCreateNewBox_Click(object sender, RoutedEventArgs e)
@@ -127,9 +88,9 @@ namespace GDSB.UI
         {
             var lsSB = PanelBoxes.Children;
 
-            foreach(var sb in lsSB)
+            foreach (var sb in lsSB)
             {
-                if(sb.GetType() == typeof(CustomComponents.UserSecretBox))
+                if (sb.GetType() == typeof(CustomComponents.UserSecretBox))
                 {
                     var element = (CustomComponents.UserSecretBox)sb;
                     if (element.box.boxName.ToUpper().Contains(textboxSearch.Text.ToUpper()))

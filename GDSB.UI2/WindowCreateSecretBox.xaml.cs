@@ -1,17 +1,9 @@
 ﻿using GDSB.Model.ProfileObjects;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GDSB.UI
 {
@@ -27,7 +19,7 @@ namespace GDSB.UI
             InitializeComponent();
             this.profile = profile;
 
-            if(box == null)
+            if (box == null)
             {
                 colorPicker.SelectedColor = Color.FromRgb((byte)Business.Util.r.Next(0, 254), (byte)Business.Util.r.Next(0, 254), (byte)Business.Util.r.Next(0, 254));
             }
@@ -73,7 +65,7 @@ namespace GDSB.UI
                     boxName = textBoxNome.Text,
                     user = textBoxUsuario.Text,
                     pass = textBoxSenha.Text,
-                    newBaseColor  = (Color)colorPicker.SelectedColor,
+                    newBaseColor = (Color)colorPicker.SelectedColor,
                     dtCreated = DateTime.Now,
                     obs = textBoxOBS.Text,
                     url = textBoxURL.Text
@@ -90,6 +82,12 @@ namespace GDSB.UI
 
         public void Dispose()
         {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            // Clean
         }
 
         private void colorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
@@ -266,9 +264,10 @@ namespace GDSB.UI
 
         private void textBoxUsuario_KeyUp(object sender, KeyEventArgs e)
         {
-            if (profile.boxes.Where(x => x.user.StartsWith(textBoxUsuario.Text) && x.user.Length > textBoxUsuario.Text.Length).Any() && e.Key != Key.Back)
+            var suggest = profile.boxes.FirstOrDefault(x => x.user.StartsWith(textBoxUsuario.Text) && x.user.Length > textBoxUsuario.Text.Length);
+            if (suggest != null && e.Key != Key.Back)
             {
-                var userSuggest = profile.boxes.Where(x => x.user.StartsWith(textBoxUsuario.Text) && x.user.Length > textBoxUsuario.Text.Length).First().user;
+                var userSuggest = suggest.user;
                 var oldLength = textBoxUsuario.Text.Length;
 
                 textBoxUsuario.Text += userSuggest.Substring(oldLength);

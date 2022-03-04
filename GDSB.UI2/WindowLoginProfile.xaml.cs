@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GDSB.UI
 {
@@ -41,9 +32,6 @@ namespace GDSB.UI
                 this.DialogResult = false;
         }
 
-        public void Dispose()
-        {
-        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -55,7 +43,7 @@ namespace GDSB.UI
             if (e.Key == Key.Enter)
                 TryDecript();
         }
-        
+
 
         private void TryDecript()
         {
@@ -65,11 +53,25 @@ namespace GDSB.UI
                 new WindowUserProfile(profile).Show();
                 DialogResult = true;
             }
-            catch(Exception ex)
+            catch
             {
                 MessageBox.Show("Falha ao descriptografar arquivo devido senha INCORRETA ");
-                return;
             }
+        }
+
+
+
+
+
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            // Clean
         }
     }
 }

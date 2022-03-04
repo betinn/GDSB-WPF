@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GDSB.Model.ProfileObjects
 {
@@ -14,15 +10,13 @@ namespace GDSB.Model.ProfileObjects
         public DateTime dataNascimento { get; private set; }
         public string senha { get; set; }
         public DateTime dtCreated { get; private set; }
-
-        public List<SecretBox> boxes = null;
+        public List<SecretBox> boxes { get; set; }
         public bool secretKey { get; private set; }
         public string imageBase64 { get; set; }
         public Settings.Config config { get; set; }
         public System.Windows.Media.Color colorGradLine1 { get; set; }
         public System.Windows.Media.Color colorGradLine2 { get; set; }
         public System.Windows.Media.Color colorGradLine3 { get; set; }
-        public List<CreditCard> creditCards = new List<CreditCard>();
 
 
         public Profile(string fullFileName, string nome, DateTime dataNascimento, bool secretKey, string senha, DateTime dtCreated, List<SecretBox> lssecrets, string imageBase64
@@ -47,7 +41,7 @@ namespace GDSB.Model.ProfileObjects
 
         public string GetSecretKey()
         {
-            return string.Format("GD-SECRET-{0}{1}{2}{3}{4}{5}", 
+            return string.Format("GD-SECRET-{0}{1}{2}{3}{4}{5}",
                 nome.Substring(0, 1), senha, nome.Substring(nome.Length - 1, 1), dataNascimento.Month.ToString(), dtCreated.Day.ToString(), dtCreated.Second.ToString());
         }
     }

@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GDSB.Model.ProfileObjects
+﻿namespace GDSB.Model.ProfileObjects
 {
-    public class EncryptedJsonAES
+    public class EncryptedJsonAes
     {
-        public byte[] bytekyte;
-        public byte[] secbyte;
-        public byte[] Montain;
+        public byte[] bytekyte { get; set; }
+        public byte[] secbyte { get; set; }
+        public byte[] Montain { get; set; }
     }
 }

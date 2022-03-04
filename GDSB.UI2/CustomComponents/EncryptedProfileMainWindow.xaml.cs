@@ -1,20 +1,7 @@
-﻿using GDSB.UI.Forms;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace GDSB.UI.CustomComponents
 {
@@ -23,7 +10,7 @@ namespace GDSB.UI.CustomComponents
     /// </summary>
     public partial class EncryptedProfileMainWindow : System.Windows.Controls.UserControl
     {
-        public GDSB.Model.ProfileObjects.EncryptedProfile encryptedProfile;
+        public GDSB.Model.ProfileObjects.EncryptedProfile encryptedProfile { get; set; }
 
         private bool colorEffectOnClick = false;
 
@@ -83,9 +70,6 @@ namespace GDSB.UI.CustomComponents
                 System.Windows.MessageBox.Show(ex.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
                 wd.IsEnabled = true;
                 this.labelNome.Background = Brushes.Transparent;
-            }
-            finally
-            {
             }
             System.Threading.Thread.Sleep(100);
         }

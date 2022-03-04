@@ -47,13 +47,17 @@
   <ItemGroup>
     <Compile Include="Old\SecretBox.cs" />
     <Compile Include="Old\Profile.cs" />
-    <Compile Include="ProfileObjects\CreditCard.cs" />
-    <Compile Include="ProfileObjects\EncryptedJsonAES.cs" />
+    <Compile Include="ProfileObjects\EncryptedJsonAes.cs" />
     <Compile Include="ProfileObjects\EncryptedProfile.cs" />
     <Compile Include="ProfileObjects\Profile.cs" />
     <Compile Include="ProfileObjects\SecretBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\Config.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

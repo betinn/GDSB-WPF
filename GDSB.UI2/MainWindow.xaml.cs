@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
 
 namespace GDSB.UI
 {
@@ -32,18 +28,13 @@ namespace GDSB.UI
                 };
 
                 Panel.Children.Add(prof);
-
-                //if (profiles.Count == 1)
-                //{
-                //    prof.RaiseEvent(new MouseButtonEventArgs(Mouse.PrimaryDevice, Environment.TickCount, MouseButton.Left) { RoutedEvent = Button.MouseLeftButtonUpEvent });
-                //}
             }
         }
 
         private void Panel_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             ScrollViewer scv = (ScrollViewer)sender;
-            scv.ScrollToHorizontalOffset(scv.HorizontalOffset - (e.Delta/3));
+            scv.ScrollToHorizontalOffset(scv.HorizontalOffset - (e.Delta / 3));
             e.Handled = true;
         }
 
@@ -88,7 +79,7 @@ namespace GDSB.UI
                     var encProfile = Business.ProfileConfiguration.GetEncryptedProfile(dlg.FileName);
                     using (Forms.FormLogin fm = new Forms.FormLogin(encProfile))
                     {
-                        if(fm.ShowDialog()== System.Windows.Forms.DialogResult.OK)
+                        if (fm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                         {
                             MessageBox.Show("Perfil importado e convertido com sucesso", "ebaa", MessageBoxButton.OK);
                             AtualizarProfiles();
@@ -96,7 +87,7 @@ namespace GDSB.UI
                     }
 
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("Falha no processo: " + ex.Message, "", MessageBoxButton.OK);
                 }
