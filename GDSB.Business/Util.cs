@@ -9,10 +9,10 @@ namespace GDSB.Business
     {
         public static readonly Random r = new Random();
 
-        public static BitmapImage BitmapToBitmapImage(Bitmap src)
+        public static BitmapImage BitmapToBitmapImage(Bitmap src, System.Drawing.Imaging.ImageFormat imageFormat = null)
         {
             MemoryStream ms = new MemoryStream();
-            (src).Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            (src).Save(ms, imageFormat == null ? System.Drawing.Imaging.ImageFormat.Png : imageFormat);
             BitmapImage image = new BitmapImage();
             image.BeginInit();
             ms.Seek(0, SeekOrigin.Begin);

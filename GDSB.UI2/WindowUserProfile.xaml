@@ -25,9 +25,9 @@
 
             <WrapPanel Orientation="Horizontal" Width="auto" Margin="10,10,0,10" HorizontalAlignment="Left" Name="PanelBoxes" Height="Auto" VerticalAlignment="Stretch"/>
         </ScrollViewer>
-        <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="BtnCreateNewBox" Content="" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="36" MouseLeftButtonDown="BtnCreateNewBox_Click" Height="34" BorderThickness="2" Padding="0" TextOptions.TextHintingMode="Animated" FontSize="14" Cursor="Hand">
+        <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="BtnCreateNewBox" Content="" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="36" MouseLeftButtonDown="BtnCreateNewBox_Click" Height="34" BorderThickness="2" Padding="0" TextOptions.TextHintingMode="Animated" FontSize="14" Cursor="Hand" ToolTip="Criar nova caixa de senha">
             <Label.Background>
-                <ImageBrush ImageSource="Resources/add.png">
+                <ImageBrush ImageSource="Resources/NewBox.png">
                     <ImageBrush.RelativeTransform>
                         <TransformGroup>
                             <ScaleTransform x:Name="ScaleBtnCreateNewBox" CenterY="0.5" CenterX="0.5" ScaleX="1.15" ScaleY="1.15"/>
@@ -39,9 +39,9 @@
                 </ImageBrush>
             </Label.Background>
         </Label>
-        <Label MouseEnter="BtnConfigurationProfile_MouseEnter" MouseLeave="BtnConfigurationProfile_MouseLeave" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="BtnConfigurationProfile" Content="" HorizontalAlignment="Right" Margin="0,10,51,0" VerticalAlignment="Top" Width="36" MouseLeftButtonDown="BtnConfigurationProfile_MouseLeftButtonDown"  Height="34" BorderThickness="2" Padding="0" TextOptions.TextHintingMode="Animated" FontSize="14" Cursor="Hand">
+        <Label MouseEnter="BtnConfigurationProfile_MouseEnter" MouseLeave="BtnConfigurationProfile_MouseLeave" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="BtnConfigurationProfile" Content="" HorizontalAlignment="Right" Margin="0,10,51,0" VerticalAlignment="Top" Width="36" MouseLeftButtonDown="BtnConfigurationProfile_MouseLeftButtonDown"  Height="34" BorderThickness="2" Padding="0" TextOptions.TextHintingMode="Animated" FontSize="14" Cursor="Hand" ToolTip="Configuracoes do perfil" RenderTransformOrigin="0.5,0.5">
             <Label.Background>
-                <ImageBrush ImageSource="Resources/Config.png">
+                <ImageBrush ImageSource="Resources/Config House (2).png">
                     <ImageBrush.RelativeTransform>
                         <TransformGroup>
                             <ScaleTransform x:Name="ScaleBtnConfiguration" CenterY="0.5" CenterX="0.5" ScaleX="0.85" ScaleY="0.85"/>
@@ -54,5 +54,19 @@
             </Label.Background>
         </Label>
         <TextBox x:Name="textboxSearch" HorizontalContentAlignment="Center" GotFocus="textboxSearch_GotFocus" TextChanged="textboxSearch_TextChanged" HorizontalAlignment="Stretch" Height="19" Margin="192,10,198,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" SelectionBrush="#FF008176" RenderTransformOrigin="0.5,0.5" Background="White" FontFamily="Comic Sans MS" FontSize="14"/>
+        <Label MouseEnter="BtnRecoveryFiles_MouseEnter" MouseLeave="BtnRecoveryFiles_MouseLeave" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="BtnRecoveryFiles" Content="" HorizontalAlignment="Right" Margin="0,10,92,0" VerticalAlignment="Top" Width="36" MouseLeftButtonDown="BtnRecoveryFiles_MouseLeftButtonDown"  Height="34" BorderThickness="2" Padding="0" TextOptions.TextHintingMode="Animated" FontSize="14" Cursor="Hand" RenderTransformOrigin="0.5,0.5" ToolTip="Recovery Profile">
+            <Label.Background>
+                <ImageBrush ImageSource="Resources/recovery folder-100s-224px.png">
+                    <ImageBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform x:Name="ScaleRecoveryFiles" CenterY="0.5" CenterX="0.5" ScaleX="0.85" ScaleY="0.85"/>
+                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                            <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ImageBrush.RelativeTransform>
+                </ImageBrush>
+            </Label.Background>
+        </Label>
     </Grid>
 </Window>

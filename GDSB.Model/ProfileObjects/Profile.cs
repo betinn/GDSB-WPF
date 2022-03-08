@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GDSB.Model.ProfileObjects
 {
-    public class Profile
+    public class Profile : IDisposable
     {
         public string fullFileName { get; set; }
         public string nome { get; set; }
@@ -43,6 +43,16 @@ namespace GDSB.Model.ProfileObjects
         {
             return string.Format("GD-SECRET-{0}{1}{2}{3}{4}{5}",
                 nome.Substring(0, 1), senha, nome.Substring(nome.Length - 1, 1), dataNascimento.Month.ToString(), dtCreated.Day.ToString(), dtCreated.Second.ToString());
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            //clear
         }
     }
 }

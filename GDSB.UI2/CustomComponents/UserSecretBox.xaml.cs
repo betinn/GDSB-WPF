@@ -1,8 +1,13 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using WpfAnimatedGif;
 
 namespace GDSB.UI.CustomComponents
 {
@@ -12,10 +17,11 @@ namespace GDSB.UI.CustomComponents
     public partial class UserSecretBox : UserControl
     {
         public GDSB.Model.ProfileObjects.SecretBox box { get; set; }
+        BackgroundWorker worker;
+
         public UserSecretBox(Model.ProfileObjects.SecretBox box)
         {
             InitializeComponent();
-
             lblBoxName.Content = box.boxName;
             textUsuario.Text = box.user;
             textSenha.Password = box.pass;
@@ -30,7 +36,12 @@ namespace GDSB.UI.CustomComponents
                 {
                     Process.Start(box.url);
                 });
+                lblBoxName.ToolTip = box.url;
             }
+            worker = new BackgroundWorker();
+            worker.DoWork += Worker_DoWork;
+            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
+            worker.WorkerSupportsCancellation = true;
 
             this.box = box;
             AtualizaEstrela();
@@ -50,20 +61,42 @@ namespace GDSB.UI.CustomComponents
             Excluir.MouseLeave += Excluir_MouseLeave;
 
         }
+
+        
+
         public void AtualizaEstrela()
         {
             if (box.favorito)
             {
-                star.Source = Business.Util.BitmapToBitmapImage(new System.Drawing.Bitmap(Properties.Resources.STAR));
-                star.Width = 16;
-                star.Height = 16;
+                if (!worker.IsBusy)
+                {
+                    worker.RunWorkerAsync();
+                    ImageBehavior.SetAnimatedSource(ImgLikeEffect, 
+                        Business.Util.BitmapToBitmapImage(Properties.Resources.Heart_effect_like, imageFormat: System.Drawing.Imaging.ImageFormat.Gif));
+                }
+                
+                star.Source = Business.Util.BitmapToBitmapImage(Properties.Resources.Heart_Like);
+
+                ImageBehavior.SetAutoStart(ImgLikeEffect, true);
+                ImgLikeEffect.Visibility = Visibility.Visible;
+                
             }
             else
             {
-                star.Source = Business.Util.BitmapToBitmapImage(new System.Drawing.Bitmap(Properties.Resources.star_cinza));
-                star.Width = 13;
-                star.Height = 13;
+                ImgLikeEffect.Visibility = Visibility.Hidden;
+                star.Source = Business.Util.BitmapToBitmapImage(Properties.Resources.Heart_Colorless);
             }
+        }
+
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            ImgLikeEffect.Visibility = Visibility.Hidden;
+        }
+
+        private void Worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            System.Threading.Thread.Sleep(1000);
+            
         }
 
         private void CopyPass_Click(object sender, RoutedEventArgs e)
@@ -130,6 +163,7 @@ namespace GDSB.UI.CustomComponents
             ScaleBtnEdit.ScaleX = 1.1;
             ScaleBtnEdit.ScaleY = 1.1;
         }
+
         #endregion
 
 

@@ -70,6 +70,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9e7cd3b544a090dc, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.2.0.2\lib\net40\WpfAnimatedGif.dll</HintPath>
+    </Reference>
     <Reference Include="Xceed.Wpf.AvalonDock, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
       <HintPath>..\packages\Extended.Wpf.Toolkit.4.1.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
     </Reference>
@@ -249,6 +252,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\star cinza.png" />
+    <Resource Include="Resources\recovery folder-100s-224px.png" />
+    <Resource Include="Resources\NewBox.png" />
+    <Resource Include="Resources\Config House %282%29.png" />
+    <None Include="Resources\Heart Colorless.png" />
+    <None Include="Resources\Heart Like.png" />
+    <None Include="Resources\Heart effect like.gif" />
     <Content Include="Resources\STAR.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
