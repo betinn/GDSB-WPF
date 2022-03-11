@@ -34,6 +34,20 @@
         <TextBox x:Name="textBoxSenha" HorizontalAlignment="Left" Height="23" Margin="10,291,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="263"/>
         <Label Content="Senha" HorizontalAlignment="Left" Margin="10,260,0,0" VerticalAlignment="Top" Width="263" Foreground="White"/>
         <Button Content="Salvar" HorizontalAlignment="Left" Margin="10,364,0,0" VerticalAlignment="Top" Width="150" Height="45" FontFamily="Segoe UI Black" FontSize="14" Click="Button_Click"/>
+        <Label MouseEnter="BtnRecoveryFiles_MouseEnter" MouseLeave="BtnRecoveryFiles_MouseLeave" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="BtnRecoveryFiles" Content="" HorizontalAlignment="Right" Margin="0,232,378,0" VerticalAlignment="Top" Width="36" MouseLeftButtonDown="BtnRecoveryFiles_MouseLeftButtonDown"  Height="34" BorderThickness="2" Padding="0" TextOptions.TextHintingMode="Animated" FontSize="14" Cursor="Hand" RenderTransformOrigin="0.5,0.5" ToolTip="Recovery Profile">
+            <Label.Background>
+                <ImageBrush ImageSource="Resources/recovery folder-100s-224px.png">
+                    <ImageBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform x:Name="ScaleRecoveryFiles" CenterY="0.5" CenterX="0.5" ScaleX="0.85" ScaleY="0.85"/>
+                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                            <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ImageBrush.RelativeTransform>
+                </ImageBrush>
+            </Label.Background>
+        </Label>
 
 
     </Grid>

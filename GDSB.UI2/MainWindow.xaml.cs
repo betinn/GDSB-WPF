@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -92,6 +93,25 @@ namespace GDSB.UI
                     MessageBox.Show("Falha no processo: " + ex.Message, "", MessageBoxButton.OK);
                 }
             }
+
+        }
+
+        private void BtnRecoveryFiles_MouseEnter(object sender, MouseEventArgs e)
+        {
+            //ScaleX="0.85" ScaleY="0.85"
+            ScaleRecoveryFiles.ScaleX = 1.05;
+            ScaleRecoveryFiles.ScaleY = 1.05;
+        }
+
+        private void BtnRecoveryFiles_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ScaleRecoveryFiles.ScaleX = 0.85;
+            ScaleRecoveryFiles.ScaleY = 0.85;
+        }
+
+        private void BtnRecoveryFiles_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start(GDSB.Business.ProfileConfiguration.GetDirectoryRecoveryProfile(""));
         }
 
     }

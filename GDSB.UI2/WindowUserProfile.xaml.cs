@@ -141,32 +141,12 @@ namespace GDSB.UI
             ScaleBtnConfiguration.ScaleX = 0.85;
             ScaleBtnConfiguration.ScaleY = 0.85;
         }
-        private void BtnRecoveryFiles_MouseEnter(object sender, MouseEventArgs e)
-        {
-            //ScaleX="0.85" ScaleY="0.85"
-            ScaleRecoveryFiles.ScaleX = 1.05;
-            ScaleRecoveryFiles.ScaleY = 1.05;
-        }
-
-        private void BtnRecoveryFiles_MouseLeave(object sender, MouseEventArgs e)
-        {
-            ScaleRecoveryFiles.ScaleX = 0.85;
-            ScaleRecoveryFiles.ScaleY = 0.85;
-        }
-
-
-
         #endregion
-
         private void textboxSearch_GotFocus(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(textboxSearch.Text))
                 textboxSearch.SelectAll();
         }
 
-        private void BtnRecoveryFiles_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
     }
 }

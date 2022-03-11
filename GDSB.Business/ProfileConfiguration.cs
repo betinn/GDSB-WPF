@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -49,13 +50,52 @@ namespace GDSB.Business
         private static string subfolder = "Profiles";
         private static string extension = ".GDSBX";
         private static string baseFolder = Path.Combine(Application.StartupPath, subfolder);
-
+#if DEBUG
+        private static string baseRecoveryFiles { get { return Path.Combine(Path.GetTempPath(), "GDSB", "DEBUG"); } }
+#else
+        private static string baseRecoveryFiles { get { return Path.Combine(Path.GetTempPath(), "GDSB"); } }
+#endif
+        public static string GetDirectoryRecoveryProfile(string fullfilename)
+        {
+            if (string.IsNullOrEmpty(fullfilename))
+                return baseRecoveryFiles;
+            else
+                return Path.Combine(baseRecoveryFiles,
+                        new FileInfo(fullfilename).Name.Replace(extension, ""));
+        }
+        private static string GetDirectoryToday(string fullfilename)
+        {
+            return Path.Combine(GetDirectoryRecoveryProfile(fullfilename),
+                    DateTime.Now.Year.ToString(),
+                    DateTime.Now.Month.ToString(),
+                    DateTime.Now.Day.ToString());
+        }
         public static bool UpdateProfile(Profile profile)
         {
             profile.fullFileName = Path.Combine(baseFolder, new FileInfo(profile.fullFileName).Name);
             string profileBKP = string.Empty;
             if (File.Exists(profile.fullFileName))
+            {
+
                 profileBKP = File.ReadAllText(profile.fullFileName);
+
+                if (!Directory.Exists(GetDirectoryToday(profile.fullFileName)))
+                {
+                    Directory.CreateDirectory(GetDirectoryToday(profile.fullFileName));
+                }
+                string pathflRecover = Path.Combine(GetDirectoryToday(profile.fullFileName),
+                    new FileInfo(profile.fullFileName).Name.Replace(extension, DateTime.Now.ToString("hh-mm-ss") + extension)); 
+
+                while (File.Exists(pathflRecover))
+                {
+                    pathflRecover = Path.Combine(GetDirectoryToday(profile.fullFileName),
+                    new FileInfo(profile.fullFileName).Name.Replace(extension, DateTime.Now.ToString("hh-mm-ss") + extension));
+                    System.Threading.Thread.Sleep(500);
+                }
+                
+                using (var flRecover = File.CreateText(pathflRecover))
+                    flRecover.Write(profileBKP);
+            }
             try
             {
                 while (File.Exists(profile.fullFileName))
@@ -88,7 +128,25 @@ namespace GDSB.Business
             var names = Directory.GetFiles(baseFolder).Where(x => x.EndsWith(extension)).ToList();
 
             foreach (var name in names)
-                ls.Add(GetEncryptedProfile(name));
+            {
+                try
+                {
+                    var pf = GetEncryptedProfile(name);
+                    if (pf == null || pf.profileEncrypted == null)
+                        throw new NullReferenceException();
+                    ls.Add(pf);
+                }
+                catch
+                {
+                    if (MessageBox.Show("Erro ao tentar ler arquivo do perfil: " + name + "\n\nTente recuperar o perfil caso exista backups de recuperacao na pasta temporaria." +
+                        "\n\nQuer abrir a pasta temporaria de recuperacao de arquivos agora?", "Erro", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        Process.Start(GetDirectoryRecoveryProfile(""));
+                        MessageBox.Show("As pastas seguem a logica de 'nome do arquivo', ano, mes e dia\n\nO arquivo que está com problema é o arquivo de nome: " + name.Split('\\')[name.Split('\\').Length - 1] + 
+                            "\n\n\nApós localizar um arquivo de recuperacao recente desejado, copie e cole o arquivo no diretorio 'Profiles' na base do .exe deste app: " + baseFolder, "Atencao!", MessageBoxButtons.OK);
+                    }
+                }
+            }
 
             return ls.OrderBy(x => x.name).ToList();
         }
@@ -233,7 +291,6 @@ namespace GDSB.Business
 
             return plaintext;
         }
-
         public static string ConvertImgToBase64(string FullPath)
         {
             using (Image im = Image.FromFile(FullPath))
@@ -257,7 +314,7 @@ namespace GDSB.Business
 
 
 
-        #region Import Old Profile
+#region Import Old Profile
         public static Model.Old.Profile TryDecryptOldProfile(string senha, byte[] profile)
         {
             var decryptedBaseAES = DecryptStringFromBytes_Aes(profile, GetPasswordStringIntoByte(senha), aesIVBase);
@@ -268,6 +325,6 @@ namespace GDSB.Business
 
             return JsonConvert.DeserializeObject<Model.Old.Profile>(jsonprofile);
         }
-        #endregion
+#endregion
     }
 }
