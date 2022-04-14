@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31313.79
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDSB.Model", "GDSB.Model\GDSB.Model.csproj", "{54BB2E4A-193E-494F-AC19-986911EBE504}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDSB.Business", "GDSB.Business\GDSB.Business.csproj", "{A0F49209-B5B2-4155-92C8-A2C834B96B27}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDSB.UI", "GDSB.UI2\GDSB.UI.csproj", "{988BC465-CE4C-4143-AEC0-2D97D1C7BCB4}"
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupGDSBX", "SetupGDSBX\SetupGDSBX.vdproj", "{D4FB0653-CBB7-4806-A821-1A628C7AD08B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E41B98EC-D8C8-4A4C-80CD-61CB4D652188}"
 	ProjectSection(SolutionItems) = preProject
@@ -34,8 +32,6 @@ Global
 		{988BC465-CE4C-4143-AEC0-2D97D1C7BCB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{988BC465-CE4C-4143-AEC0-2D97D1C7BCB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{988BC465-CE4C-4143-AEC0-2D97D1C7BCB4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D4FB0653-CBB7-4806-A821-1A628C7AD08B}.Debug|Any CPU.ActiveCfg = Debug
-		{D4FB0653-CBB7-4806-A821-1A628C7AD08B}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
